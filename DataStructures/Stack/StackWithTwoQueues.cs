@@ -51,9 +51,7 @@ namespace DataStructures.Stack
 
         private void SwapQueues()
         {
-            var queueCopy = _queue1;
-            _queue1 = _queue2;
-            _queue2 = queueCopy;
+            (_queue1, _queue2) = (_queue2, _queue1);
         }
     }
 }

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Linq;
+using System.Text;
 
 namespace DataStructures.Queue
 {
@@ -23,9 +24,26 @@ namespace DataStructures.Queue
 
         public bool IsFull => last == queueArray.Length-1;
 
-        public void Enqueue(int value) => queueArray[++last] = value;
+        public void Enqueue(int value)
+        {
+            if (IsFull)
+            {
+                throw new InvalidOperationException("Queue is full");
+            }
+            queueArray[++last] = value;  
+        }
 
-        public int Dequeue() => queueArray[first++];
+        public int Dequeue()
+        {
+            if (IsEmpty)
+            {
+                throw new InvalidOperationException("Queue is empty");
+            }
+
+            var dequeued = queueArray[first];
+            queueArray[first++] = 0; // set the dequeued item to 0 to remove it from array.
+            return dequeued;
+        } 
 
         public int Peek() => queueArray[first];
 
@@ -37,7 +55,21 @@ namespace DataStructures.Queue
             queueArray[++last] = val;
         }
 
-        private void ResizeQueue(int newCapacity) => Array.Resize(ref queueArray, newCapacity); 
+        private void ResizeQueue(int newCapacity) => Array.Resize(ref queueArray, newCapacity);
 
+        public override string ToString()
+        {
+            var sb = new StringBuilder();
+            for (var i = first; i <= last; i++)
+            {
+                sb.Append(queueArray[i]);
+                if (i < last)
+                {
+                    sb.Append(",");
+                }
+            }
+            
+            return sb.ToString();
+        }
     }
 }

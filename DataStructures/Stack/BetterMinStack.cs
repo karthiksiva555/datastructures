@@ -4,7 +4,7 @@ using System.Collections.Generic;
 namespace DataStructures.Stack
 {
     /// <summary>
-    /// This implementation uses an extra stack to maintan Min values
+    /// This implementation uses an extra stack to maintain Min values
     /// Takes O(1) to return the min value even when we pop the current min value
     /// </summary>
     public class BetterMinStack

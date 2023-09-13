@@ -17,24 +17,27 @@ namespace DataStructures.Queue
             _stack2 = new Stack<int>();
         }
 
+        // Runtime complexity: O(1)
         public void Enqueue(int value)
         {
             _stack1.Push(value);
         }
 
+        // Runtime complexity: O(n) because, when the second stack is empty, we would have to move all the elements from stack 1 to stack 2.  
         public int Dequeue()
         {
-            if (_stack1.Count == 0 && _stack2.Count == 0)
+            if (IsEmpty())
                 throw new InvalidOperationException("Queue is empty");
 
-            if(_stack2.Count == 0)
-            {
-                while (_stack1.Count > 0)
-                    _stack2.Push(_stack1.Pop());
-            }
+            if (_stack2.Count != 0) return _stack2.Pop();
+            
+            while (_stack1.Count > 0)
+                _stack2.Push(_stack1.Pop());
 
             return _stack2.Pop();
         }
+
+        public bool IsEmpty() => _stack1.Count == 0 && _stack2.Count == 0; 
 
         public void Print()
         {

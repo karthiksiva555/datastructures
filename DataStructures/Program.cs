@@ -1,28 +1,34 @@
 ﻿// See https://aka.ms/new-console-template for more information
 
 using DataStructures.Arrays;
+using DataStructures.LinkedList;
+using DataStructures.Queue;
+using DataStructures.Stack;
 using DataStructures.Tree;
 
-Console.WriteLine("Hello, World!");
+//Console.WriteLine("Hello, World!");
 
-// Dynamic Array
-var dynamicArray = new DynamicArray(4);
-dynamicArray.Insert(10);
-dynamicArray.Insert(20);
-dynamicArray.Insert(30);
-dynamicArray.Insert(40);
-dynamicArray.Insert(50);
-dynamicArray.Print();
-dynamicArray.DeleteAt(2);
-dynamicArray.Print();
-Console.WriteLine($"Max value in array is {dynamicArray.MaxValue()}");
-Console.WriteLine($"Array contains 40: {dynamicArray.Contains(40)}");
-var intersect = dynamicArray.Intersect(new int[] { 20, 40, 80 });
-Console.WriteLine("[{0}]", string.Join(",", intersect));
-dynamicArray.Reverse();
-dynamicArray.InsertAt(25, 2);
-dynamicArray.InsertAt(35, 4);
-dynamicArray.Print();
+// // Dynamic Array
+// var dynamicArray = new DynamicArray(4);
+// dynamicArray.Insert(10);
+// dynamicArray.Insert(20);
+// dynamicArray.Insert(30);
+// dynamicArray.Insert(40);
+// dynamicArray.Insert(50);
+// dynamicArray.Print();
+// dynamicArray.DeleteAt(2);
+// dynamicArray.Print();
+// Console.WriteLine($"Max value in array is {dynamicArray.MaxValue()}");
+// Console.WriteLine($"Array contains 40: {dynamicArray.Contains(40)}");
+// var intersect = dynamicArray.Intersect(new int[] { 20, 40, 80 });
+// Console.WriteLine("[{0}]", string.Join(",", intersect));
+// dynamicArray.Reverse();
+// dynamicArray.InsertAt(25, 2);
+// dynamicArray.InsertAt(35, 4);
+// dynamicArray.Print();
+
+// CSharpLinkedList linkedList = new CSharpLinkedList();
+// linkedList.Operations();
 
 //var bst = new BinarySearchTreeLL();
 //bst.Insert(5);
@@ -97,6 +103,10 @@ dynamicArray.Print();
 
 //var result = CSharpDictionary.GetFirstNonRepeatingChar("a green apple");
 //Console.WriteLine(result);
+
+//----------------------------------------------------------------------------------
+// Queues
+
 //var stack = new StackWithTwoQueues();
 
 //stack.Push(10);
@@ -116,6 +126,20 @@ dynamicArray.Print();
 
 //foreach(var element in result)
 //    Console.WriteLine(element);
+
+// Priority Queue
+// var emergencyQueue = new PriorityQueue<string, int>();
+// emergencyQueue.Enqueue("Fever", 2);
+// emergencyQueue.Enqueue("Ear infection", 3);
+// emergencyQueue.Enqueue("Heart attack", 1);
+// emergencyQueue.Enqueue("Arm Pain", 4);
+//
+// var getPatient1 = emergencyQueue.Dequeue();
+// Console.WriteLine(getPatient1);
+// var getPatient2 = emergencyQueue.Dequeue();
+// Console.WriteLine(getPatient2);
+// var getPatient3 = emergencyQueue.Dequeue();
+// Console.WriteLine(getPatient3);
 
 //var pQueue = new PriorityQueueArray(5);
 
@@ -155,6 +179,19 @@ dynamicArray.Print();
 //circularQueue.Dequeue();
 //circularQueue.Enqueue(55);
 //circularQueue.Print();
+
+// Queue implementation with Array
+// var queue = new SuperQueueArray();
+// queue.Enqueue(10);
+// queue.Enqueue(20);
+// queue.Enqueue(30);
+// queue.Enqueue(40);
+// Console.WriteLine(queue);
+// var removed = queue.Dequeue();
+// Console.WriteLine("Removed: "+ removed);
+// removed = queue.Dequeue();
+// Console.WriteLine("Removed: "+ removed);
+// Console.WriteLine(queue);
 
 //var input = new Queue<int>();
 //input.Enqueue(10);
@@ -288,10 +325,19 @@ dynamicArray.Print();
 //foreach (var node in linkedList.Reverse())
 //    Console.WriteLine(node.ToString());
 
-//var output = CSharpStack.ReverseString("siva karthik");
-//Console.WriteLine(output);
+// var output1 = CSharpStack.ReverseString("siva karthik");
+// Console.WriteLine(output1);
 
-//var isBalanced = CSharpStack.IsExpressionBalanced("");
-//Console.WriteLine(isBalanced);
+// var output2 = CSharpStack.ReverseString(null);
+// Console.WriteLine(output2);
+
+
+// var input = "(([1]+<2>))"; // "", "(", ")"
+// var isBalanced = CSharpStack.IsExpressionBalanced(null);
+// Console.WriteLine(isBalanced);
+
+// var input = "(([1]+<2>))"; // "", "(", ")"
+// var isBalanced = CSharpStack.IsExpressionBalancedNoDict(input);
+// Console.WriteLine(isBalanced);
 
 Console.ReadKey();

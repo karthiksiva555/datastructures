@@ -12,7 +12,7 @@ namespace DataStructures.LinkedList
 
         ~SingleLinkedListNode()
         {
-            Console.WriteLine($"Single Linked list node Descructor called for node value :{Value}");
+            Console.WriteLine($"Single Linked list node Destructor called for node value :{Value}");
         }
     }
 }
