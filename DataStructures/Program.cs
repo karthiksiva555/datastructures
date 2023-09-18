@@ -1,6 +1,7 @@
 ﻿// See https://aka.ms/new-console-template for more information
 
 using DataStructures.Arrays;
+using DataStructures.HashTable;
 using DataStructures.LinkedList;
 using DataStructures.Queue;
 using DataStructures.Stack;
@@ -44,11 +45,18 @@ using DataStructures.Tree;
 
 //Console.WriteLine("Test Complete");
 
+// Hash Tables
+// --------------------------------------------------------------------------------
+
 //var uniquePairs = CSharpDictionary.GetNumberOfPairsWithKDiff(new int[] { 1, 7, 5, 9, 2, 12, 3 }, 2);
 //Console.WriteLine(uniquePairs);
 
-//var uniquePairs = CSharpDictionary.GetNumberOfPairsWithKDiffBetter(new int[] { 1, 7, 5, 9 }, 2);
-//Console.WriteLine(uniquePairs);
+// var uniquePairs = CSharpDictionary.GetNumberOfPairsWithKDiffBetter(new int[] { 1, 7, 5, 9, 3, 4, 7 }, 2);
+// Console.WriteLine(uniquePairs);
+//
+// var uniquePairsNsk = CSharpDictionary.GetNumberOfPairsWithKDiffBetterNsk(new int[] { 1, 7, 5, 9, 3, 4, 7 }, 2);
+// Console.WriteLine(uniquePairsNsk);
+
 
 //Console.WriteLine(CSharpDictionary.GetIndicesOfPairWithKDiff(new int[] {5, 25, 2, 11, 7, 15 }, 9));
 
@@ -73,22 +81,21 @@ using DataStructures.Tree;
 
 //Console.WriteLine(customHashTableOA.Get(21));
 
-//var customHashTable = new CustomHashTableChaining();
-//customHashTable.Put(2, "Siva");
-//customHashTable.Put(12, "Karthik");
-//customHashTable.Put(22, "Narisetty");
-//customHashTable.Put(32, "New Test");
-//customHashTable.Put(32, "Just Test");
-
-//customHashTable.Put(3, "Vaish");
-//customHashTable.Put(4, "Baskaran");
-
-//Console.WriteLine(customHashTable.Get(22));
-
-//customHashTable.Remove(2);
-//customHashTable.Remove(3);
-//customHashTable.Remove(32);
-
+// var customHashTable = new CustomHashTableChaining();
+// customHashTable.Put(2, "Siva");
+// customHashTable.Put(12, "Karthik");
+// customHashTable.Put(22, "Narisetty");
+// customHashTable.Put(32, "New Test");
+// customHashTable.Put(32, "Just Test");
+//
+// customHashTable.Put(3, "Vaish");
+// customHashTable.Put(4, "Baskaran");
+//
+// Console.WriteLine(customHashTable.Get(22));
+//
+// customHashTable.Remove(2);
+// customHashTable.Remove(3);
+// customHashTable.Remove(32);
 
 //Console.WriteLine("Test Complete");
 
@@ -101,8 +108,15 @@ using DataStructures.Tree;
 //Console.WriteLine(set.FindFirstRepeatedValue(input.ToCharArray()));
 //set.Print();
 
-//var result = CSharpDictionary.GetFirstNonRepeatingChar("a green apple");
-//Console.WriteLine(result);
+// var setOps = new CSharpHashSet<int>();
+// setOps.HashSetOperations();
+
+// var result = CSharpDictionary.GetFirstNonRepeatingChar("a green apple");
+// Console.WriteLine(result);
+
+// CSharpDictionary.DictionaryOperations();
+// CSharpHashTable.HashTableOperations();
+// CSharpHashTable.HashFunctionOperations();
 
 //----------------------------------------------------------------------------------
 // Queues

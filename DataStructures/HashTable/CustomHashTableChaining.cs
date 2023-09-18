@@ -17,7 +17,7 @@ namespace DataStructures.HashTable
             }
         }
         
-        private readonly LinkedList<Entry>[] _entries;
+        private readonly LinkedList<Entry>?[] _entries;
         
         public CustomHashTableChaining(int capacity = 10)
         {
@@ -26,7 +26,6 @@ namespace DataStructures.HashTable
 
         public void Put(int key, string value)
         {
-            var bucket = GetOrCreateBucket(key);
             var entry = GetEntryByKey(key);
             if (entry != null)
             {
@@ -34,13 +33,13 @@ namespace DataStructures.HashTable
                 return;
             }
 
+            var bucket = GetOrCreateBucket(key);
             bucket.AddLast(new Entry(key, value));
         }
 
-        public string Get(int key)
+        public string? Get(int key)
         {
             var entry = GetEntryByKey(key);
-
             return entry?.Value;
         }
 
@@ -49,31 +48,19 @@ namespace DataStructures.HashTable
             var entry = GetEntryByKey(key);
             var bucket = GetBucket(key);
 
-            if (entry != null && bucket != null)
-            {
-                bucket.Remove(entry);
-                return;
-            }
+            if (entry == null || bucket == null) 
+                throw new InvalidOperationException("Key not found");
             
-            throw new InvalidOperationException("Key not found");
+            bucket.Remove(entry);
         }
 
-        private Entry GetEntryByKey(int key)
+        private Entry? GetEntryByKey(int key)
         {
             var index = GetHash(key);
-
-            if (_entries[index] != null)
-            {
-                foreach (var entry in _entries[index])
-                {
-                    if (entry.Key == key)
-                        return entry;
-                }
-            }
-            return null;
+            return _entries[index] == null ? null : _entries[index]?.FirstOrDefault(entry => entry.Key == key);
         }
 
-        private LinkedList<Entry> GetBucket(int key)
+        private LinkedList<Entry>? GetBucket(int key)
         {
             return _entries[GetHash(key)];
         }
@@ -81,9 +68,7 @@ namespace DataStructures.HashTable
         private LinkedList<Entry> GetOrCreateBucket(int key)
         {
             var index = GetHash(key);
-            if (_entries[index] == null)
-                _entries[index] = new LinkedList<Entry>();
-            return _entries[index];
+            return _entries[index] ?? (_entries[index] = new LinkedList<Entry>());
         }
 
         private int GetHash(int key) => key % _entries.Length;
