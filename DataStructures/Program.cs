@@ -9,41 +9,100 @@ using DataStructures.Tree;
 
 //Console.WriteLine("Hello, World!");
 
-// // Dynamic Array
-// var dynamicArray = new DynamicArray(4);
-// dynamicArray.Insert(10);
-// dynamicArray.Insert(20);
-// dynamicArray.Insert(30);
-// dynamicArray.Insert(40);
-// dynamicArray.Insert(50);
-// dynamicArray.Print();
-// dynamicArray.DeleteAt(2);
-// dynamicArray.Print();
-// Console.WriteLine($"Max value in array is {dynamicArray.MaxValue()}");
-// Console.WriteLine($"Array contains 40: {dynamicArray.Contains(40)}");
-// var intersect = dynamicArray.Intersect(new int[] { 20, 40, 80 });
-// Console.WriteLine("[{0}]", string.Join(",", intersect));
-// dynamicArray.Reverse();
-// dynamicArray.InsertAt(25, 2);
-// dynamicArray.InsertAt(35, 4);
-// dynamicArray.Print();
+// Binary Trees
+// --------------------------------------------------------------------------------
 
-// CSharpLinkedList linkedList = new CSharpLinkedList();
-// linkedList.Operations();
+// Distance K Nodes
+// var binaryTree = new BinaryTreeLL();
+// binaryTree.AddNode(20);
+// binaryTree.AddNode(10);
+// binaryTree.AddNode(30);
+// binaryTree.AddNode(6);
+// binaryTree.AddNode(21);
+// binaryTree.AddNode(4);
+// binaryTree.AddNode(3);
+// binaryTree.AddNode(8);
+// var k = 2;
+// Console.WriteLine($"All Nodes with distance {k} from root:");
+// binaryTree.PrintNodesWithDistanceK(k);
+//binaryTree.LevelOrderTraversalUsingHeight();
 
-//var bst = new BinarySearchTreeLL();
-//bst.Insert(5);
-//bst.Insert(10);
-//bst.Insert(3);
-//bst.Insert(15);
-//bst.Insert(9);
-//bst.Insert(2);
-//bst.Insert(20);
-//bst.Insert(13);
+// Wrong vs Correct BST validation
+// var binaryTree = new BinaryTreeLL();
+// binaryTree.AddNode(5);
+// binaryTree.AddNode(3);
+// binaryTree.AddNode(7);
+// binaryTree.AddNode(2);
+// binaryTree.AddNode(8);
+//
+// Console.WriteLine($"Wrong BST Validation Algorithm: Is the tree BST? {binaryTree.IsBinarySearchTreeWrong()}");
+// Console.WriteLine($"Correct BST Validation Algorithm: Is the tree BST? {binaryTree.IsBinarySearchTree()}");
+// var bst = new BinarySearchTreeLL();
+// bst.Insert(5);
+// bst.Insert(10);
+// bst.Insert(3);
+// bst.Insert(15);
+// bst.Insert(9);
+// bst.Insert(2);
+// bst.Insert(20);
+// bst.Insert(13);
 
 //Console.WriteLine($"find result: {bst.Find(5)}");
 
 //Console.WriteLine("Test Complete");
+
+// var binaryTree = new BinaryTreeLL();
+// binaryTree.AddNode(5);
+// binaryTree.AddNode(10);
+// binaryTree.AddNode(3);
+// binaryTree.AddNode(15);
+// binaryTree.AddNode(9);
+// binaryTree.AddNode(2);
+// binaryTree.AddNode(20);
+// binaryTree.AddNode(13);
+
+// Console.WriteLine($"Height of the binary tree: {binaryTree.Height()}");
+
+// Console.WriteLine($"Is the tree BST: {binaryTree.IsBst(bst.Root)}");
+
+//Console.WriteLine($"Is the tree BST: {binaryTree.IsBinarySearchTreeWrong()}");
+
+// Tree Equals
+//var binaryTreeCompare = new BinaryTreeLL();
+//binaryTreeCompare.AddNode(5);
+// binaryTreeCompare.AddNode(10);
+// binaryTreeCompare.AddNode(3);
+// binaryTreeCompare.AddNode(15);
+// binaryTreeCompare.AddNode(9);
+// binaryTreeCompare.AddNode(2);
+// binaryTreeCompare.AddNode(20);
+// binaryTreeCompare.AddNode(13);
+// binaryTreeCompare.AddNode(25);
+
+//Console.WriteLine($"Are the two trees are equal? : {binaryTree.Equals(binaryTreeCompare)}");
+
+// Binary tree using LL
+//var binaryTreLL = new BinaryTreeLL();
+//binaryTreLL.AddNode(10);
+//binaryTreLL.AddNode(20);
+//binaryTreLL.AddNode(30);
+//binaryTreLL.AddNode(40);
+//binaryTreLL.AddNode(50);
+//binaryTreLL.AddNode(60);
+//binaryTreLL.AddNode(70);
+
+//binaryTreLL.PreOrderTraversal();
+//binaryTreLL.InOrderTraversal();
+//binaryTreLL.PostOrderTraversal();
+//binaryTreLL.LevelOrderTraversal();
+
+//Console.WriteLine($" The element { 45 } exists : {binaryTreLL.SearchTree(45)}");
+//Console.WriteLine($" The element { 40 } exists : {binaryTreLL.SearchTree(40)}");
+//Console.WriteLine($" The element { 10 } exists : {binaryTreLL.SearchTree(10)}");
+
+//Console.WriteLine($" Removing 20 from the tree");
+//binaryTreLL.DeleteNode(20);
+//binaryTreLL.LevelOrderTraversal();
 
 // Hash Tables
 // --------------------------------------------------------------------------------
@@ -223,6 +282,9 @@ using DataStructures.Tree;
 //var singleLL = SingleLinkedListBase.CreateLoop();
 //Console.WriteLine(singleLL.HasLoop());
 
+// CSharpLinkedList linkedList = new CSharpLinkedList();
+// linkedList.Operations();
+
 //var singleLL = new SinglyLinkedList();
 //singleLL.AddFirst(2);
 ////Console.WriteLine(singleLL.GetKthNodeFromEnd(3));
@@ -272,29 +334,6 @@ using DataStructures.Tree;
 //Stack<int> stack = new Stack<int>();
 
 //Queue<int> queue = new Queue<int>();
-
-// Binary tree using LL
-//var binaryTreLL = new BinaryTreeLL();
-//binaryTreLL.AddNode(10);
-//binaryTreLL.AddNode(20);
-//binaryTreLL.AddNode(30);
-//binaryTreLL.AddNode(40);
-//binaryTreLL.AddNode(50);
-//binaryTreLL.AddNode(60);
-//binaryTreLL.AddNode(70);
-
-//binaryTreLL.PreOrderTraversal();
-//binaryTreLL.InOrderTraversal();
-//binaryTreLL.PostOrderTraversal();
-//binaryTreLL.LevelOrderTraversal();
-
-//Console.WriteLine($" The element { 45 } exists : {binaryTreLL.SearchTree(45)}");
-//Console.WriteLine($" The element { 40 } exists : {binaryTreLL.SearchTree(40)}");
-//Console.WriteLine($" The element { 10 } exists : {binaryTreLL.SearchTree(10)}");
-
-//Console.WriteLine($" Removing 20 from the tree");
-//binaryTreLL.DeleteNode(20);
-//binaryTreLL.LevelOrderTraversal();
 
 // Generic Stack
 // int stack using generic stack
@@ -353,5 +392,24 @@ using DataStructures.Tree;
 // var input = "(([1]+<2>))"; // "", "(", ")"
 // var isBalanced = CSharpStack.IsExpressionBalancedNoDict(input);
 // Console.WriteLine(isBalanced);
+
+// // Dynamic Array
+// var dynamicArray = new DynamicArray(4);
+// dynamicArray.Insert(10);
+// dynamicArray.Insert(20);
+// dynamicArray.Insert(30);
+// dynamicArray.Insert(40);
+// dynamicArray.Insert(50);
+// dynamicArray.Print();
+// dynamicArray.DeleteAt(2);
+// dynamicArray.Print();
+// Console.WriteLine($"Max value in array is {dynamicArray.MaxValue()}");
+// Console.WriteLine($"Array contains 40: {dynamicArray.Contains(40)}");
+// var intersect = dynamicArray.Intersect(new int[] { 20, 40, 80 });
+// Console.WriteLine("[{0}]", string.Join(",", intersect));
+// dynamicArray.Reverse();
+// dynamicArray.InsertAt(25, 2);
+// dynamicArray.InsertAt(35, 4);
+// dynamicArray.Print();
 
 Console.ReadKey();
