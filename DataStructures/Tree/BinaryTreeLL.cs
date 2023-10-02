@@ -332,5 +332,77 @@ namespace DataStructures.Tree
         {
             Root = null;
         }
+
+        #region Exercises
+
+        // Size of the node => number of nodes in the tree 
+        public int Size() => Size(Root);
+        
+        private static int Size(BinaryTreeNode? node)
+        {
+            if (node == null) return 0;
+
+            return 1 + Size(node.Left) + Size(node.Right);
+        }
+
+        public int CountLeaves() => CountLeaves(Root);
+
+        private static int CountLeaves(BinaryTreeNode? node)
+        {
+            if (node == null) return 0;
+
+            if (node.Left == null && node.Right == null) return 1;
+
+            return CountLeaves(node.Left) + CountLeaves(node.Right);
+        }
+
+        public int MaxValue() => MaxValue(Root);
+
+        private static int MaxValue(BinaryTreeNode? node)
+        {
+            if (node == null) return -1;
+
+            return Math.Max(node.Value, Math.Max(MaxValue(node.Left), MaxValue(node.Right)));
+        }
+
+        public bool TreeContains(int value) => TreeContains(Root, value);
+
+        private static bool TreeContains(BinaryTreeNode? node, int value)
+        {
+            if (node == null) return false;
+
+            return node.Value == value || TreeContains(node.Left, value) || TreeContains(node.Right, value);
+        }
+
+        public bool AreSiblings(int val1, int val2) => AreSiblings(Root, val1, val2);
+
+        private static bool AreSiblings(BinaryTreeNode? node, int val1, int val2)
+        {
+            if (node == null) return false;
+
+            if (node.Left!=null && node.Right!=null && ((node.Left.Value == val1 && node.Right.Value == val2) || (node.Left.Value == val2 && node.Right.Value == val1))) return true;
+
+            return AreSiblings(node.Left, val1, val2) || AreSiblings(node.Right, val1, val2);
+        }
+
+        public List<int> GetAncestors(int val)
+        {
+            var ancestors = new List<int>();
+            GetAncestors(Root, val, ancestors);
+
+            return ancestors;
+        } 
+        
+        private static bool GetAncestors(BinaryTreeNode? node, int val, ICollection<int> ancestors)
+        {
+            if (node == null) return false;
+            
+            if(node.Value == val) return true;
+
+            ancestors.Add(node.Value);
+            return GetAncestors(node.Left, val, ancestors) || GetAncestors(node.Right, val, ancestors);
+        } 
+
+        #endregion
     }
 }

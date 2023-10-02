@@ -12,6 +12,37 @@ using DataStructures.Tree;
 // Binary Trees
 // --------------------------------------------------------------------------------
 
+// Maximum value in BST
+// var bst = new BinarySearchTreeLL();
+// bst.Insert(5);
+// bst.Insert(10);
+// bst.Insert(3);
+// bst.Insert(15);
+// bst.Insert(9);
+// bst.Insert(2);
+// bst.Insert(20);
+// bst.Insert(13);
+// Console.WriteLine($"The maximum value in the tree: {bst.MaxValue()}");
+
+// Size of the tree (number of nodes in a tree), // Number Of Leaf nodes in the tree // Max Value in the tree using recursion
+// Tree Contains value // AreSiblings // Get Ancestors
+// var binaryTree = new BinaryTreeLL();
+// binaryTree.AddNode(20);
+// binaryTree.AddNode(10);
+// binaryTree.AddNode(30);
+// binaryTree.AddNode(6);
+// binaryTree.AddNode(21);
+// binaryTree.AddNode(4);
+// binaryTree.AddNode(3);
+// binaryTree.AddNode(8);
+// Console.WriteLine($"The size of the tree is: {binaryTree.Size()}");
+// Console.WriteLine($"The number of leaves in the tree is: {binaryTree.CountLeaves()}");
+// Console.WriteLine($"The Max value in the tree is: {binaryTree.MaxValue()}");
+// Console.WriteLine($"The tree contains 10 : {binaryTree.TreeContains(10)}");
+// Console.WriteLine($"Are 10, 6 are siblings? : {binaryTree.AreSiblings(10, 6)}");
+// var ancestors = binaryTree.GetAncestors(8);
+// ancestors.ForEach(Console.WriteLine);
+
 // Distance K Nodes
 // var binaryTree = new BinaryTreeLL();
 // binaryTree.AddNode(20);

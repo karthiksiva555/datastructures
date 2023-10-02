@@ -55,5 +55,19 @@ namespace DataStructures.Tree
 
             return false;
         }
+
+        public int MaxValue()
+        {
+            if (Root == null)
+                throw new InvalidOperationException("Operation cannot be performed because the tree is empty");
+         
+            return MaxValue(Root);
+        }
+
+        // In BST, the max value will be at the right most leaf
+        private static int MaxValue(BinaryTreeNode node)
+        {
+            return node.Right == null ? node.Value : MaxValue(node.Right);
+        }
     }
 }
