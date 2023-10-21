@@ -9,6 +9,31 @@ using DataStructures.Tree;
 
 //Console.WriteLine("Hello, World!");
 
+// AVL Trees
+// var tree = new AvlTree();
+// tree.Insert(10);
+// tree.Insert(20);
+// tree.Insert(30);
+
+// var tree = new AvlTree();
+// tree.Insert(10);
+// tree.Insert(30);
+// tree.Insert(20);
+
+// var tree = new BinarySearchTreeLL();
+// tree.Insert(15);
+// tree.Insert(10);
+// tree.Insert(5);
+// tree.Insert(12);
+// tree.Insert(20);
+// tree.Insert(25);
+// tree.Insert(17);
+//tree.Insert(12);
+//tree.Insert(14);
+//Console.WriteLine($"Is the Binary Search Tree Balanced? {tree.IsBalanced()}");
+//Console.WriteLine($"Is the Binary Search Tree Balanced? {tree.IsBalancedBetter()}");
+//Console.WriteLine($"Is the Binary Search Tree Perfect? {tree.IsPerfect()}");
+
 // Binary Trees
 // --------------------------------------------------------------------------------
 
