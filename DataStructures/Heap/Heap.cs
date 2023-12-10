@@ -17,16 +17,18 @@ public class Heap
         _count++;
     }
 
-    public void RemoveRoot()
+    public int RemoveRoot()
     {
         if (IsEmpty())
             throw new InvalidOperationException("Heap is empty");
 
+        var removed = _heap[0];
         _heap[0] = _heap[_count - 1];
         _heap[_count - 1] = 0; // To remove the item from the array
         _count--;
 
         BubbleDown();
+        return removed;
     }
 
     public bool IsFull() => _heap.Length-1 == _count;

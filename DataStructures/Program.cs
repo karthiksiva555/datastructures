@@ -29,6 +29,12 @@ heap.RemoveRoot();
 heap.RemoveRoot();
 heap.PrintHeap();
 
+var unsorted = new []{ 32, 8, 19, 6, 45 };
+var sortedAsc = HeapSort.SortAscending(unsorted);
+Console.WriteLine($"Sorted Array in Ascending: {string.Join(",", sortedAsc)}");
+var sortedDesc = HeapSort.SortDescending(unsorted);
+Console.WriteLine($"Sorted Array in Descending: {string.Join(",", sortedDesc)}");
+
 // AVL Trees
 // var tree = new AvlTree();
 // tree.Insert(10);
