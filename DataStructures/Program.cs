@@ -2,12 +2,32 @@
 
 using DataStructures.Arrays;
 using DataStructures.HashTable;
+using DataStructures.Heap;
 using DataStructures.LinkedList;
 using DataStructures.Queue;
 using DataStructures.Stack;
 using DataStructures.Tree;
 
 //Console.WriteLine("Hello, World!");
+
+// Heaps
+var heap = new Heap();
+heap.Insert(15);
+heap.Insert(10);
+heap.Insert(3);
+heap.Insert(8);
+heap.Insert(12);
+heap.Insert(9);
+heap.Insert(4);
+heap.Insert(1);
+heap.Insert(24);
+
+heap.PrintHeap();
+
+heap.RemoveRoot();
+heap.RemoveRoot();
+heap.RemoveRoot();
+heap.PrintHeap();
 
 // AVL Trees
 // var tree = new AvlTree();
