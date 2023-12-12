@@ -11,29 +11,47 @@ using DataStructures.Tree;
 //Console.WriteLine("Hello, World!");
 
 // Heaps
-var heap = new Heap();
-heap.Insert(15);
-heap.Insert(10);
-heap.Insert(3);
-heap.Insert(8);
-heap.Insert(12);
-heap.Insert(9);
-heap.Insert(4);
-heap.Insert(1);
-heap.Insert(24);
+// var heap = new Heap();
+// heap.Insert(15);
+// heap.Insert(10);
+// heap.Insert(3);
+// heap.Insert(8);
+// heap.Insert(12);
+// heap.Insert(9);
+// heap.Insert(4);
+// heap.Insert(1);
+// heap.Insert(24);
+//
+// heap.PrintHeap();
+//
+// heap.RemoveRoot();
+// heap.RemoveRoot();
+// heap.RemoveRoot();
+// heap.PrintHeap();
+//
+// var unsorted = new []{ 32, 8, 19, 6, 45 };
+// HeapSort.SortAscending(unsorted); // because heapsort is in-place algorithm
+// Console.WriteLine($"Sorted Array in Ascending: {string.Join(",", unsorted)}");
+// HeapSort.SortDescending(unsorted);
+// Console.WriteLine($"Sorted Array in Descending: {string.Join(",", unsorted)}");
 
-heap.PrintHeap();
+// var pq = new PriorityQueueHeap();
+// pq.Enqueue(5);
+// pq.Enqueue(25);
+// pq.Enqueue(10);
+// pq.Enqueue(15);
+//
+// pq.PrintQueue();
+//
+// Console.WriteLine($"first item from the queue: {pq.Dequeue()}");
+//
+// pq.PrintQueue();
 
-heap.RemoveRoot();
-heap.RemoveRoot();
-heap.RemoveRoot();
-heap.PrintHeap();
-
-var unsorted = new []{ 32, 8, 19, 6, 45 };
-var sortedAsc = HeapSort.SortAscending(unsorted);
-Console.WriteLine($"Sorted Array in Ascending: {string.Join(",", sortedAsc)}");
-var sortedDesc = HeapSort.SortDescending(unsorted);
-Console.WriteLine($"Sorted Array in Descending: {string.Join(",", sortedDesc)}");
+// Heapify
+var input = new[] { 5, 3, 8, 4, 1, 2 };
+HeapSort.PrintArray(input);
+HeapSort.Heapify(input);
+HeapSort.PrintArray(input);
 
 // AVL Trees
 // var tree = new AvlTree();
