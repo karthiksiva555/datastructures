@@ -63,23 +63,37 @@ using DataStructures.Tree;
 // Console.WriteLine($"Is input array a max heap? : {HeapUtil.IsMaxHeap(input)}");
 
 // Min Heap
-var minHeap = new MinHeap();
-minHeap.Insert(20, "value 1");
-minHeap.Insert(10, "value 2");
-minHeap.Insert(30, "value 3");
-minHeap.Insert(5, "value 4");
-minHeap.Insert(40, "value 5");
+// var minHeap = new MinHeap();
+// minHeap.Insert(20, "value 1");
+// minHeap.Insert(10, "value 2");
+// minHeap.Insert(30, "value 3");
+// minHeap.Insert(5, "value 4");
+// minHeap.Insert(40, "value 5");
+//
+// minHeap.PrintHeap();
+// var removed = minHeap.Remove();
+// Console.WriteLine($"Removed Item: {removed.Key}, {removed.Value}");
+//
+// removed = minHeap.Remove();
+// Console.WriteLine($"Removed Item: {removed.Key}, {removed.Value}");
+//
+// removed = minHeap.Remove();
+// Console.WriteLine($"Removed Item: {removed.Key}, {removed.Value}");
 
-minHeap.PrintHeap();
-var removed = minHeap.Remove();
-Console.WriteLine($"Removed Item: {removed.Key}, {removed.Value}");
-
-removed = minHeap.Remove();
-Console.WriteLine($"Removed Item: {removed.Key}, {removed.Value}");
-
-removed = minHeap.Remove();
-Console.WriteLine($"Removed Item: {removed.Key}, {removed.Value}");
-
+// MinPriorityQueue
+// var emergencyRoomQueue = new MinPriorityQueue();
+// emergencyRoomQueue.Add("Fever", 5);
+// emergencyRoomQueue.Add("Cough", 6);
+// emergencyRoomQueue.Add("Covid", 3);
+// emergencyRoomQueue.Add("Heart attack", 1);
+// emergencyRoomQueue.Add("Broken Leg", 2);
+//
+// emergencyRoomQueue.PrintQueue();
+//
+// Console.WriteLine($"Next patient in the Queue: {emergencyRoomQueue.Remove()}");
+// Console.WriteLine($"Next patient in the Queue: {emergencyRoomQueue.Remove()}");
+// Console.WriteLine($"Next patient in the Queue: {emergencyRoomQueue.Remove()}");
+// Console.WriteLine($"Next patient in the Queue: {emergencyRoomQueue.Remove()}");
 
 // AVL Trees
 // var tree = new AvlTree();
