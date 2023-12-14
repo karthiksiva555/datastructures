@@ -48,10 +48,38 @@ using DataStructures.Tree;
 // pq.PrintQueue();
 
 // Heapify
-var input = new[] { 5, 3, 8, 4, 1, 2 };
-HeapSort.PrintArray(input);
-HeapSort.Heapify(input);
-HeapSort.PrintArray(input);
+// var input = new[] { 5, 3, 8, 4, 1, 2 };
+// HeapUtil.PrintArray(input);
+// HeapUtil.Heapify(input);
+// HeapUtil.PrintArray(input);
+
+// const int k = 3;
+// var input = new[] { 5, 3, 8, 4, 1, 2 };
+// var result = HeapUtil.FindKthLargest(input, k);
+// Console.WriteLine($"{k}th largest element in the array is {result}");
+
+//var input = new[] { 5, 3, 8, 4, 1, 2 };
+//var heapArray = new[] { 8, 4, 5, 3, 1, 2 };
+// Console.WriteLine($"Is input array a max heap? : {HeapUtil.IsMaxHeap(input)}");
+
+// Min Heap
+var minHeap = new MinHeap();
+minHeap.Insert(20, "value 1");
+minHeap.Insert(10, "value 2");
+minHeap.Insert(30, "value 3");
+minHeap.Insert(5, "value 4");
+minHeap.Insert(40, "value 5");
+
+minHeap.PrintHeap();
+var removed = minHeap.Remove();
+Console.WriteLine($"Removed Item: {removed.Key}, {removed.Value}");
+
+removed = minHeap.Remove();
+Console.WriteLine($"Removed Item: {removed.Key}, {removed.Value}");
+
+removed = minHeap.Remove();
+Console.WriteLine($"Removed Item: {removed.Key}, {removed.Value}");
+
 
 // AVL Trees
 // var tree = new AvlTree();
