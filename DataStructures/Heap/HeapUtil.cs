@@ -48,7 +48,11 @@ public static class HeapUtil
     
     public static void Heapify(int[] input)
     {
-        for(var i=0; i<input.Length; i++)
+        var lastParentIndex = (input.Length / 2) - 1;
+        
+        // we can start at 0 and go down till last parent, but
+        // Starting at the last parent and going upwards reduces the number of recursions
+        for(var i=lastParentIndex; i>= 0; i--)
         {
             Heapify(input, i);
         }
