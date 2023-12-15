@@ -95,6 +95,21 @@ using DataStructures.Tree;
 // Console.WriteLine($"Next patient in the Queue: {emergencyRoomQueue.Remove()}");
 // Console.WriteLine($"Next patient in the Queue: {emergencyRoomQueue.Remove()}");
 
+// MinHeap Using C# PriorityQueue<TElement, TPriority>
+// var minHeap = new CSharpMinHeap();
+// minHeap.Insert("value priority 5", 5);
+// minHeap.Insert("value priority 2", 2);
+// minHeap.Insert("value priority 1", 1);
+// minHeap.Insert("value priority 3", 3);
+// minHeap.Insert("value priority 6", 6);
+// minHeap.Insert("value priority 4", 4);
+//
+// Console.WriteLine($"First item from the heap: {minHeap.Remove()}");
+// Console.WriteLine($"Second item from the heap: {minHeap.Remove()}");
+// Console.WriteLine($"Third item from the heap: {minHeap.Remove()}");
+// Console.WriteLine($"Fourth item from the heap: {minHeap.Remove()}");
+// Console.WriteLine($"Fifth item from the heap: {minHeap.Remove()}");
+
 // AVL Trees
 // var tree = new AvlTree();
 // tree.Insert(10);
