@@ -20,13 +20,10 @@ public class Trie
         if (index >= word.Length)
             return;
 
-        var chIndex = word[index] - 'a';
-        var nextNode = node;
-        if (node.Children[chIndex] == null)
-        {
-            nextNode = new TrieNode(word[index]);
-            node.Children[chIndex] = nextNode;
-        }
+        if (!node.HasChild(word[index]))
+            node.AddChild(word[index]);
+ 
+        var nextNode = node.GetChild(word[index]); 
 
         Insert(nextNode, word, ++index);
     }
@@ -37,9 +34,14 @@ public class Trie
 
         foreach (var ch in word)
         {
-            var index = ch - 'a';
-            node.Children[index] ??= new TrieNode(ch);
-            node = node.Children[index];
+            // var index = ch - 'a';
+            // node.Children[index] ??= new TrieNode(ch);
+            // node = node.Children[index];
+            
+            // After implementing abstraction principle/iterator pattern
+            if (!node.HasChild(ch))
+                node.AddChild(ch);
+            node = node.GetChild(ch);
         }
         node.IsEndOfWord = true;
     }

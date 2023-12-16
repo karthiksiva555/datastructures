@@ -15,13 +15,9 @@ using DataStructures.Trie;
 // Tries
 //-------------------------------------------------------------------
 var trie = new Trie();
-trie.Insert("karthik");
+trie.Insert("cat");
+trie.Insert("cab");
 Console.WriteLine("end of trie");
-
-var trieHashTable = new TrieHashTable();
-trieHashTable.Insert("cat");
-trieHashTable.Insert("can");
-Console.WriteLine("end of trie hashtable");
 
 //-------------------------------------------------------------------
 // Heaps
