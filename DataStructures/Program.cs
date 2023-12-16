@@ -7,9 +7,23 @@ using DataStructures.LinkedList;
 using DataStructures.Queue;
 using DataStructures.Stack;
 using DataStructures.Tree;
+using DataStructures.Trie;
 
 //Console.WriteLine("Hello, World!");
 
+//-------------------------------------------------------------------
+// Tries
+//-------------------------------------------------------------------
+var trie = new Trie();
+trie.Insert("karthik");
+Console.WriteLine("end of trie");
+
+var trieHashTable = new TrieHashTable();
+trieHashTable.Insert("cat");
+trieHashTable.Insert("can");
+Console.WriteLine("end of trie hashtable");
+
+//-------------------------------------------------------------------
 // Heaps
 // var heap = new Heap();
 // heap.Insert(15);
