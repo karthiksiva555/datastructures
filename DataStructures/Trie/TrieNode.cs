@@ -63,6 +63,10 @@ public class TrieNode
         return HasChild(ch) ? Children[ch] : new TrieNode();
     }
 
+    public bool HasChildren() => Children.Count > 0;
+
+    public void RemoveChild(char ch) => Children.Remove(ch);
+
     #endregion
 
 }

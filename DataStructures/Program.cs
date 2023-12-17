@@ -15,8 +15,36 @@ using DataStructures.Trie;
 // Tries
 //-------------------------------------------------------------------
 var trie = new Trie();
-trie.Insert("cat");
-trie.Insert("cab");
+trie.Insert("canada");
+trie.Insert("can");
+trie.Insert("cane");
+trie.Insert("canabis");
+
+trie.Insert("ran");
+trie.Insert("rani");
+
+// Console.WriteLine($"Contains can? : {trie.Contains("can")}");
+// Console.WriteLine($"Contains cat? : {trie.Contains("cat")}");
+// Console.WriteLine($"Contains canada? : {trie.Contains("canada")}");
+// Console.WriteLine($"Contains cana? : {trie.Contains("cana")}");
+//
+// Console.WriteLine("Pre-Order Traversal");
+// trie.PreOrderTraversal();
+//
+// Console.WriteLine("Post-Order Traversal");
+// trie.PostOrderTraversal();
+
+// trie.Remove("can");
+//
+// Console.WriteLine($"Contains can? : {trie.Contains("can")}");
+// Console.WriteLine($"Contains cane? : {trie.Contains("cane")}");
+
+const string autoCompleteWord = "cana";
+var autoComplete = trie.FindWords(autoCompleteWord);
+Console.WriteLine($"list of strings start with {autoCompleteWord}");
+foreach(var str in autoComplete)
+    Console.WriteLine(str);
+
 Console.WriteLine("end of trie");
 
 //-------------------------------------------------------------------
