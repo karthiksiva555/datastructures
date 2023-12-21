@@ -28,6 +28,9 @@ trie.Insert("rani");
 // Console.WriteLine($"Contains canada? : {trie.Contains("canada")}");
 // Console.WriteLine($"Contains cana? : {trie.Contains("cana")}");
 //
+
+Console.WriteLine($"Contains cana? : {trie.ContainsRecursive("cana")}");
+
 // Console.WriteLine("Pre-Order Traversal");
 // trie.PreOrderTraversal();
 //

@@ -104,6 +104,25 @@ public class Trie
         return node.IsEndOfWord;
     }
 
+    public bool ContainsRecursive(string word)
+    {
+        if (string.IsNullOrEmpty(word))
+            return false;
+        
+        return ContainsRecursive(_root, word, 0);
+    }
+
+    private bool ContainsRecursive(TrieNode node, string word, int index)
+    {
+        if (index >= word.Length)
+            return node.IsEndOfWord;
+
+        if (node == null)
+            return false;
+
+        return node.HasChild(word[index]) && ContainsRecursive(node.GetChild(word[index]), word, index + 1);
+    }
+
     private void PreOrderTraversal(TrieNode root)
     {
         Console.WriteLine(root.Character);
