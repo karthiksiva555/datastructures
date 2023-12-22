@@ -11,6 +11,83 @@ public class Trie
         _root = new TrieNode();
     }
 
+    public string LongestCommonPrefix(string[]? words)
+    {
+        if (words == null || words.Length == 0)
+            return string.Empty;
+
+        var trie = new Trie();
+        foreach(var word in words)
+            trie.Insert(word);
+        
+        var shortest = GetShortestWord(words);
+        var prefix = new StringBuilder();
+        var current = trie._root;
+        while (prefix.Length < shortest.Length)
+        {
+            var children = current?.GetChildren();
+            if (children?.Count is 0 or > 1)
+                break;
+                
+            var child = children?.FirstOrDefault();
+            prefix.Append(child?.Character);
+            current = child;
+        }
+
+        return prefix.ToString();
+    }
+
+    // Using Recursion
+    // This solution fails for input [can, canada] => returns canada as the common prefix 
+    // public string LongestCommonPrefix(string[] words)
+    // {
+    //     var longestCommonPrefix = LongestCommonPrefix(_root);
+    //     return longestCommonPrefix.Trim();
+    // }
+    
+    // private string LongestCommonPrefix(TrieNode node)
+    // {
+    //     if (node.Children.Count != 1) 
+    //         return node.Character.ToString();
+    //     
+    //     var child = node.Children.FirstOrDefault();
+    //     return node.Character + LongestCommonPrefix(child.Value);
+    // }
+
+    private static string GetShortestWord(IReadOnlyList<string>? words)
+    {
+        if (words == null || words.Count == 0)
+            return string.Empty;
+        
+        var shortest = words[0];
+
+        foreach (var word in words)
+        {
+            if (word.Length < shortest.Length)
+                shortest = word;
+        }
+        
+        return shortest;
+    }
+    
+    public int CountWords()
+    {
+        return CountWords(_root);
+    }
+
+    private int CountWords(TrieNode node)
+    {
+        var count = 0;
+        
+        if (node.IsEndOfWord)
+            count++;
+
+        foreach (var child in node.Children.Values)
+            count += CountWords(child);
+        
+        return count;
+    }
+    
     public IEnumerable<string> FindWords(string prefix)
     {
         if (string.IsNullOrEmpty(prefix))

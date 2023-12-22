@@ -67,6 +67,8 @@ public class TrieNode
 
     public void RemoveChild(char ch) => Children.Remove(ch);
 
+    public ICollection<TrieNode> GetChildren() => Children.Values;
+
     #endregion
 
 }
