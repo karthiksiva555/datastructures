@@ -14,7 +14,7 @@ using DataStructures.Trie;
 //-------------------------------------------------------------------
 // Tries
 //-------------------------------------------------------------------
-var trie = new Trie();
+// var trie = new Trie();
 // trie.Insert("canada");
 // trie.Insert("can");
 // trie.Insert("cane");
@@ -29,8 +29,8 @@ var trie = new Trie();
 // trie.Insert("can");
 // trie.Insert("canada");
 
-var words = new[] { "care", "car", "card" };
-Console.WriteLine($"Longest Common Prefix is: {trie.LongestCommonPrefix(words)}");
+// var words = new[] { "care", "car", "card" };
+// Console.WriteLine($"Longest Common Prefix is: {trie.LongestCommonPrefix(words)}");
 
 // Console.WriteLine($"Number of words in Trie: {trie.CountWords()}");
 
@@ -39,8 +39,6 @@ Console.WriteLine($"Longest Common Prefix is: {trie.LongestCommonPrefix(words)}"
 // Console.WriteLine($"Contains canada? : {trie.Contains("canada")}");
 // Console.WriteLine($"Contains cana? : {trie.Contains("cana")}");
 // Console.WriteLine($"Contains cana? : {trie.ContainsRecursive("cana")}");
-
-
 
 // Console.WriteLine("Pre-Order Traversal");
 // trie.PreOrderTraversal();
@@ -53,12 +51,11 @@ Console.WriteLine($"Longest Common Prefix is: {trie.LongestCommonPrefix(words)}"
 // Console.WriteLine($"Contains can? : {trie.Contains("can")}");
 // Console.WriteLine($"Contains cane? : {trie.Contains("cane")}");
 
-// const string autoCompleteWord = "cana";
+//const string autoCompleteWord = "can";
 // var autoComplete = trie.FindWords(autoCompleteWord);
 // Console.WriteLine($"list of strings start with {autoCompleteWord}");
 // foreach(var str in autoComplete)
 //     Console.WriteLine(str);
-//
 // Console.WriteLine("end of trie");
 
 //-------------------------------------------------------------------

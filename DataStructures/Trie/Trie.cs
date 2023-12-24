@@ -126,7 +126,7 @@ public class Trie
         foreach (var child in node.Children.Values)
             FindWords(child, prefix + child.Character, list);
     }
-   
+
     public void Remove(string word)
     {
         if (string.IsNullOrEmpty(word))
@@ -139,7 +139,6 @@ public class Trie
     {
         if (index >= word.Length)
         {
-            Console.WriteLine(root.Character);
             root.IsEndOfWord = false;
             return;
         }
