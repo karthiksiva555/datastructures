@@ -1,6 +1,7 @@
 ﻿// See https://aka.ms/new-console-template for more information
 
 using DataStructures.Arrays;
+using DataStructures.Graph;
 using DataStructures.HashTable;
 using DataStructures.Heap;
 using DataStructures.LinkedList;
@@ -10,6 +11,39 @@ using DataStructures.Tree;
 using DataStructures.Trie;
 
 //Console.WriteLine("Hello, World!");
+
+//-------------------------------------------------------------------
+// Graphs
+//-------------------------------------------------------------------
+
+var graph = new Graph();
+graph.AddNode("Siva");
+graph.AddNode("Ram");
+graph.AddNode("Neha");
+graph.AddNode("Alex");
+
+graph.AddEdge("Siva", "Ram");
+graph.AddEdge("Siva", "Neha");
+graph.AddEdge("Ram", "Siva");
+graph.AddEdge("Ram", "Neha");
+graph.AddEdge("Neha", "Siva");
+graph.AddEdge("Neha", "Ram");
+graph.AddEdge("Neha", "Alex");
+graph.AddEdge("Alex", "Neha");
+
+graph.Print();
+
+graph.RemoveEdge("Neha", "Ram");
+//graph.RemoveEdge("Neha", "Alex");
+
+graph.RemoveNode("Alex");
+
+graph.Print();
+
+graph.Print();
+
+
+//-------------------------------------------------------------------
 
 //-------------------------------------------------------------------
 // Tries
