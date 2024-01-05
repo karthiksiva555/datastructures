@@ -12,131 +12,81 @@ public class Graph
         }
 
         public string Label { get; set; }
-        
-        public Node? Next { get; set; } 
+
+        public override string ToString() => Label;
+
     }
 
-    private const int ListLength = 10;
+    private readonly Dictionary<Node, List<Node>> _adjacencyList;
 
-    private readonly Node?[] _adjacencyList;
-
-    private readonly Dictionary<string, int> _nodeIndices;
-
-    private int _count;
+    private readonly Dictionary<string, Node> _nodes;
 
     public Graph()
     {
-        _adjacencyList = new Node[ListLength];
-        _nodeIndices = new Dictionary<string, int>();
+        _adjacencyList = new Dictionary<Node, List<Node>>();
+        _nodes = new Dictionary<string, Node>();
     }
 
     public void AddNode(string label)
     {
-        if (_count >= ListLength)
-            throw new ArgumentOutOfRangeException(nameof(_count), "The Adjacency list is full"); // This should not be the case, we should always resize the array so that we don't restrict the number of nodes in a graph
+        // Node already exists
+        if (_nodes.ContainsKey(label))
+            return;
         
-        _adjacencyList[_count] = new Node(label);
-        _nodeIndices.Add(label, _count);
-        _count++;
+        var newNode = new Node(label);
+        _nodes.Add(label, newNode);
+        _adjacencyList.Add(newNode, new List<Node>());
     }
 
     public void RemoveNode(string label)
     {
-        var index = GetNodeIndex(label);
-        _adjacencyList[index] = null;
-        _nodeIndices.Remove(label);
+        // Node doesn't exists
+        if (!_nodes.TryGetValue(label, out var node))
+            return;
 
-        for (var i = 0; i < _count; i++)
-        {
-            if(i == index)
-                continue;
-            
-            var node = _adjacencyList[i];
-            RemoveNeighbour(node, label);
-        }
-    }
+        // remove from adjacency list neighbours
+        foreach (var neighbours in _adjacencyList.Values)
+            neighbours.Remove(node);
+        
+        // remove from adjacency list node
+        _adjacencyList.Remove(node);
 
-    private static void RemoveNeighbour(Node? node, string label)
-    {
-        while (node is { })
-        {
-            if (node.Next is { } && node.Next.Label.Equals(label))
-            {
-                node.Next = node.Next.Next;
-                break;
-            }
-            node = node.Next;
-        }
+        // remove from nodes
+        _nodes.Remove(label);
     }
 
     public void AddEdge(string from, string to)
     {
-        var fromIndex = GetNodeIndex(from);
-
-        var node = _adjacencyList[fromIndex];
-        if (node == null)
-        {
-            _adjacencyList[fromIndex] = new Node(to);
-            return;
-        }
+        if (!_nodes.TryGetValue(from, out var fromNode))
+            throw new ArgumentException($"The node {from} does not exists", nameof(from));
         
-        while (node.Next != null)
-        {
-            if (node.Label.Equals(to))
-                throw new InvalidOperationException($"The edge between {from} and {to} already exists.");
-            
-            node = node.Next;
-        }
-
-        node.Next = new Node(to);
+        if (!_nodes.TryGetValue(to, out var toNode))
+            throw new ArgumentException($"The node {to} does not exists", nameof(to));
+        
+        // Add the edge if it doesn't exists already.
+        if(!_adjacencyList[fromNode].Contains(toNode))
+            _adjacencyList[fromNode].Add(toNode);
     }
 
     public void RemoveEdge(string from, string to)
     {
-        var fromIndex = GetNodeIndex(from);
-        var node = _adjacencyList[fromIndex];
-        var toNodeFound = false;
+        // If either of the nodes doesn't exist, return.
+        if (!_nodes.TryGetValue(from, out var fromNode) || !_nodes.TryGetValue(to, out var toNode))
+            return;
         
-        while (node != null)
-        {
-            if (node.Next != null && node.Next.Label.Equals(to))
-            {
-                node.Next = node.Next.Next;
-                toNodeFound = true;
-                break;
-            }
-            node = node.Next;
-        }
-        
-        if(!toNodeFound)
-            throw new InvalidOperationException($"No edge found between {from} and {to}");
+        _adjacencyList[fromNode].Remove(toNode);
     }
 
     public void Print()
     {
-        Console.WriteLine("Printing the Graph...");
+        Console.WriteLine("Printing the graph...");
 
-        foreach (var i in _nodeIndices.Values)
+        foreach (var (node, neighbours) in _adjacencyList)
         {
-            var node = _adjacencyList[i];
-            var message = new StringBuilder($"The node {node?.Label} is connected with: ");
-            node = node?.Next;
-            
-            while (node is { })
-            {
-                message.Append(node.Label).Append(" ");
-                node = node.Next;
-            }
-
-            Console.WriteLine(message);
+            var neighbourSb = new StringBuilder();
+            foreach (var neighbour in neighbours)
+                neighbourSb.Append(neighbour.ToString()+ ' ');
+            Console.WriteLine($"The node {node.Label} is connected with [ {neighbourSb} ]");
         }
-    }
-
-    private int GetNodeIndex(string label)
-    {
-        if (!_nodeIndices.ContainsKey(label))
-            throw new ArgumentOutOfRangeException(nameof(label), $"The graph doesn't contain the node {label}");
-
-        return _nodeIndices[label];
     }
 }
