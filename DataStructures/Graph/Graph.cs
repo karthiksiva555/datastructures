@@ -1,3 +1,4 @@
+using System.ComponentModel.Design;
 using System.Text;
 
 namespace DataStructures.Graph;
@@ -77,6 +78,53 @@ public class Graph
         _adjacencyList[fromNode].Remove(toNode);
     }
 
+    public void TraverseDepthFirst(string startingNode)
+    {
+        if (!_nodes.ContainsKey(startingNode))
+            return;
+        
+        var visited = new HashSet<Node>();
+        TraverseDepthFirst(_nodes[startingNode] ,visited);
+    }
+
+    private void TraverseDepthFirst(Node node, ISet<Node> visited)
+    {
+        Console.WriteLine($"Node: {node.Label}");
+        visited.Add(node);
+
+        foreach (var neighbour in _adjacencyList[node])
+        {
+            if(!visited.Contains(neighbour))
+                TraverseDepthFirst(neighbour, visited);
+        }
+    }
+
+    public void TraverseDepthFirstIterative(string startingNode)
+    {
+        if (!_nodes.ContainsKey(startingNode))
+            return;
+
+        var visited = new HashSet<Node>();
+        var stack = new Stack<Node>();
+        
+        stack.Push(_nodes[startingNode]);
+        while (stack.Count > 0)
+        {
+            var current = stack.Pop();
+            if(visited.Contains(current))
+                continue;
+            
+            Console.WriteLine(current.Label);
+            visited.Add(current);
+
+            foreach (var neighbour in _adjacencyList[current])
+            {
+                if(!visited.Contains(neighbour))
+                    stack.Push(neighbour);
+            }
+        }
+    }
+    
     public void Print()
     {
         Console.WriteLine("Printing the graph...");
@@ -85,8 +133,10 @@ public class Graph
         {
             var neighbourSb = new StringBuilder();
             foreach (var neighbour in neighbours)
-                neighbourSb.Append(neighbour.ToString()+ ' ');
-            Console.WriteLine($"The node {node.Label} is connected with [ {neighbourSb} ]");
+                neighbourSb.Append(neighbour).Append(" ");
+            if (string.IsNullOrEmpty(neighbourSb.ToString().Trim()))
+                continue;
+            Console.WriteLine($"The node {node.Label} is connected with [ {neighbourSb}]");
         }
     }
 }
