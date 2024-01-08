@@ -1,5 +1,6 @@
 using System.ComponentModel.Design;
 using System.Text;
+using DataStructures.Queue;
 
 namespace DataStructures.Graph;
 
@@ -123,6 +124,139 @@ public class Graph
                     stack.Push(neighbour);
             }
         }
+    }
+
+    /// <summary>
+    /// BFS is implemented iteratively using a queue, its uncommon to implement it using recursion
+    /// Even if we want to implement it using recursion, its inefficient and still uses graph, queue as parameters to all calls
+    /// </summary>
+    /// <param name="startingNode"></param>
+    public void TraverseBreadthFirst(string startingNode)
+    {
+        if (!_nodes.ContainsKey(startingNode))
+            return;
+
+        var visited = new HashSet<Node>();
+        var queue = new Queue<Node>();
+        queue.Enqueue(_nodes[startingNode]);
+
+        while (queue.Count > 0)
+        {
+            var node = queue.Dequeue();
+            if(visited.Contains(node))
+                continue;
+
+            Console.WriteLine($"Node: {node}");
+            visited.Add(node);
+
+            foreach (var neighbour in _adjacencyList[node])
+            {
+                if(!visited.Contains(neighbour))
+                    queue.Enqueue(neighbour);
+            }
+        }
+    }
+
+    public void TraverseBreadthFirstRecursive(string startingNode)
+    {
+        if (!_nodes.ContainsKey(startingNode))
+            return;
+
+        var queue = new Queue<Node>();
+        queue.Enqueue(_nodes[startingNode]);
+        var visited = new HashSet<Node>();
+        TraverseBreadthFirst(queue, visited);
+    }
+
+    private void TraverseBreadthFirst(Queue<Node> queue, ISet<Node> visited)
+    {
+        if (queue.Count <= 0)
+            return;
+        
+        var node = queue.Dequeue();
+        if (visited.Contains(node))
+            return;
+
+        Console.WriteLine($"Node: {node}");
+        visited.Add(node);
+
+        // foreach (var neighbour in _adjacencyList[node])
+        // {
+        //     if(!visited.Contains(neighbour))
+        //         queue.Enqueue(neighbour);
+        // }
+        
+        foreach (var neighbour in _adjacencyList[node].Where(neighbour => !visited.Contains(neighbour)))
+        {
+            queue.Enqueue(neighbour);
+        }
+        
+        TraverseBreadthFirst(queue, visited);
+    }
+
+    public List<string> TopologicalSort()
+    {
+        var stack = new Stack<Node>();
+        var visited = new HashSet<Node>();
+        foreach(var node in _nodes.Values)
+            TopologicalSort(node, visited, stack);
+        
+        return stack.Select(item => item.Label).ToList();
+    }
+
+    private void TopologicalSort(Node node, ISet<Node> visited, Stack<Node> stack)
+    {
+        if(visited.Contains(node))
+            return;
+
+        visited.Add(node);
+
+        foreach(var neighbour in _adjacencyList[node])
+            TopologicalSort(neighbour, visited, stack);
+        
+        stack.Push(node);
+    }
+
+    public bool HasCycle()
+    {
+        var all = new HashSet<Node>();
+        var visiting = new HashSet<Node>();
+        var visited = new HashSet<Node>();
+        
+        foreach (var node in _nodes.Values)
+            all.Add(node);
+
+        while (all.Count > 0)
+        {
+            var result = HasCycle(all.First(), all, visiting, visited);
+            if (result)
+                return true;
+        }
+        
+        return false;
+    }
+
+    private bool HasCycle(Node node, ICollection<Node> all, ISet<Node> visiting, ISet<Node> visited)
+    {
+        if (visiting.Contains(node))
+            return true;
+        
+        all.Remove(node);
+        visiting.Add(node);
+
+        foreach (var neighbour in _adjacencyList[node])
+        {
+            if(visited.Contains(neighbour))
+                continue;
+            
+            if (HasCycle(neighbour, all, visiting, visited))
+                return true;
+        }
+
+        visiting.Remove(node);
+        visited.Add(node);
+
+        return false;
     }
     
     public void Print()
