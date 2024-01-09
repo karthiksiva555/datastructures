@@ -16,19 +16,30 @@ using DataStructures.Trie;
 // Graphs
 //-------------------------------------------------------------------
 
-var graph = new Graph();
-graph.AddNode("A");
-graph.AddNode("B");
-graph.AddNode("C");
-graph.AddNode("D");
+var weightedGraph = new WeightedGraph();
 
-graph.AddEdge("A", "C");
-graph.AddEdge("A", "B");
-graph.AddEdge("B", "D");
-graph.AddEdge("D", "C");
+weightedGraph.AddNode("A");
+weightedGraph.AddNode("B");
+weightedGraph.AddNode("C");
+
+weightedGraph.AddEdge("A", "B", 3);
+weightedGraph.AddEdge("A", "C", 2);
+
+weightedGraph.Print();
+
+// var graph = new Graph();
+// graph.AddNode("A");
+// graph.AddNode("B");
+// graph.AddNode("C");
+// graph.AddNode("D");
+//
+// graph.AddEdge("A", "C");
+// graph.AddEdge("A", "B");
+// graph.AddEdge("B", "D");
+// graph.AddEdge("D", "C");
 // graph.AddEdge("D", "A"); This will create a cycle
 
-graph.Print();
+// graph.Print();
 // graph.TraverseDepthFirst("A");
 // graph.TraverseDepthFirstIterative("A");
 
@@ -38,7 +49,7 @@ graph.Print();
 // var topologicalSort = graph.TopologicalSort();
 // topologicalSort.ForEach(Console.WriteLine);
 
-Console.WriteLine($"Graph has cycle? {graph.HasCycle()}");
+// Console.WriteLine($"Graph has cycle? {graph.HasCycle()}");
 
 // var graph = new Graph();
 // graph.AddNode("Siva");
