@@ -8,12 +8,22 @@ public class WeightedGraph
     {
         public string Label { get; set; }
 
+        private readonly List<Edge> _edges;
+
         public Node(string label)
         {
             Label = label;
+            _edges = new List<Edge>();
         }
 
         public override string ToString() => Label;
+
+        public void AddEdge(Node toNode, int weight)
+        {
+            _edges.Add(new Edge(this, toNode, weight));
+        }
+
+        public List<Edge> GetEdges() => _edges;
     }
 
     private class Edge
@@ -36,12 +46,9 @@ public class WeightedGraph
 
     private readonly Dictionary<string, Node> _nodes;
 
-    private readonly Dictionary<Node, List<Edge>> _adjacencyList;
-
     public WeightedGraph()
     {
         _nodes = new Dictionary<string, Node>();
-        _adjacencyList = new Dictionary<Node, List<Edge>>();
     }
 
     public void AddNode(string label)
@@ -49,9 +56,7 @@ public class WeightedGraph
         if (_nodes.ContainsKey(label))
             throw new InvalidOperationException($"The graph already contains the node {label}");
 
-        var newNode = new Node(label);
-        _nodes.Add(label, newNode);
-        _adjacencyList.Add(newNode, new List<Edge>());
+        _nodes.Add(label, new Node(label));
     }
 
     public void AddEdge(string from, string to, int weight)
@@ -66,20 +71,20 @@ public class WeightedGraph
         var toNode = _nodes[to];
         
         // check for edge already exists?
-        
-        _adjacencyList[fromNode].Add(new Edge(fromNode, toNode, weight));
-        _adjacencyList[toNode].Add(new Edge(toNode, fromNode, weight));
+        fromNode.AddEdge(toNode, weight);
+        toNode.AddEdge(fromNode, weight);
     }
     
     public void Print()
     {
         Console.WriteLine("Printing the graph...");
 
-        foreach (var (node, neighbours) in _adjacencyList)
+        foreach (var node in _nodes.Values)
         {
             var neighbourSb = new StringBuilder();
-            foreach (var neighbour in neighbours)
+            foreach (var neighbour in node.GetEdges())
                 neighbourSb.Append(neighbour).Append(" ");
+            
             if (string.IsNullOrEmpty(neighbourSb.ToString().Trim()))
                 continue;
             Console.WriteLine($"The node {node.Label} is connected with [ {neighbourSb}]");
