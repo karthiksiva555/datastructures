@@ -1,5 +1,6 @@
 ﻿// See https://aka.ms/new-console-template for more information
 
+using System.Threading.Channels;
 using DataStructures.Arrays;
 using DataStructures.Graph;
 using DataStructures.HashTable;
@@ -15,17 +16,37 @@ using DataStructures.Trie;
 //-------------------------------------------------------------------
 // Graphs
 //-------------------------------------------------------------------
+var graph = new WeightedGraph();
+graph.AddNode("A");
+graph.AddNode("B");
+graph.AddNode("C");
+graph.AddNode("D");
+graph.AddNode("E");
 
-var weightedGraph = new WeightedGraph();
+graph.AddEdge("A", "B", 3);
+graph.AddEdge("A", "C", 4);
+graph.AddEdge("A", "D", 2);
+graph.AddEdge("B", "D", 6);
+graph.AddEdge("B", "E", 1);
+graph.AddEdge("C", "D", 1);
+graph.AddEdge("D", "E", 7);
 
-weightedGraph.AddNode("A");
-weightedGraph.AddNode("B");
-weightedGraph.AddNode("C");
+const string from = "C";
+const string to = "E";
 
-weightedGraph.AddEdge("A", "B", 3);
-weightedGraph.AddEdge("A", "C", 2);
+var path = graph.GetShortestPath(from, to);
+Console.WriteLine($"The shortest path between {from} and {to}: {path}");
 
-weightedGraph.Print();
+// var weightedGraph = new WeightedGraph();
+//
+// weightedGraph.AddNode("A");
+// weightedGraph.AddNode("B");
+// weightedGraph.AddNode("C");
+//
+// weightedGraph.AddEdge("A", "B", 3);
+// weightedGraph.AddEdge("A", "C", 2);
+//
+// weightedGraph.Print();
 
 // var graph = new Graph();
 // graph.AddNode("A");

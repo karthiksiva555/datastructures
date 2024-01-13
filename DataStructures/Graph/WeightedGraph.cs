@@ -1,3 +1,5 @@
+using System.Reflection.Metadata;
+using System.Runtime.InteropServices.JavaScript;
 using System.Text;
 
 namespace DataStructures.Graph;
@@ -28,11 +30,11 @@ public class WeightedGraph
 
     private class Edge
     {
-        private Node From { get; set; }
+        public Node From { get; set; }
 
-        private Node To { get; set; }
+        public Node To { get; set; }
 
-        private int Weight { get; set; }
+        public int Weight { get; set; }
 
         public Edge(Node from, Node to, int weight)
         {
@@ -61,18 +63,83 @@ public class WeightedGraph
 
     public void AddEdge(string from, string to, int weight)
     {
-        if (!_nodes.ContainsKey(from))
-            throw new ArgumentException($"The node with label {from} doesn't exists in the graph.", nameof(from));
-        
-        if (!_nodes.ContainsKey(to))
-            throw new ArgumentException($"The node with label {to} doesn't exists in the graph.", nameof(to));
-
-        var fromNode = _nodes[from];
-        var toNode = _nodes[to];
+        var fromNode = GetNodeFromLabel(from);
+        var toNode = GetNodeFromLabel(to);
         
         // check for edge already exists?
         fromNode.AddEdge(toNode, weight);
         toNode.AddEdge(fromNode, weight);
+    }
+
+    public Path GetShortestPath(string from, string to)
+    {
+        var fromNode = GetNodeFromLabel(from);
+        var toNode = GetNodeFromLabel(to);
+
+        HashSet<Node> visited = new();
+        Dictionary<Node, int> distances = new();
+        Dictionary<Node, Node> previousNodes = new();
+        PriorityQueue<Node, int> queue = new();
+
+        foreach (var node in _nodes.Values)
+            distances[node] = int.MaxValue;
+
+        distances[fromNode] = 0;
+
+        queue.Enqueue(fromNode, 0);
+
+        while (queue.Count > 0)
+        {
+            var currentNode = queue.Dequeue();
+            visited.Add(currentNode);
+            
+            foreach (var edge in currentNode.GetEdges())
+            {
+                if (visited.Contains(edge.To))
+                    continue;
+                
+                var newDistance = distances[currentNode] + edge.Weight;
+
+                // shorter distance is found.
+                if (newDistance < distances[edge.To])
+                {
+                    distances[edge.To] = newDistance;
+                    previousNodes[edge.To] = currentNode;
+                    queue.Enqueue(edge.To, edge.Weight);
+                }
+            }
+        }
+
+        return BuildPath(previousNodes, distances, toNode);
+    }
+
+    private static Path BuildPath(IReadOnlyDictionary<Node, Node> previousNodes, IReadOnlyDictionary<Node, int> distances, Node toNode)
+    {
+        Stack<Node> stack = new();
+        stack.Push(toNode);
+        var current = toNode;
+        while (previousNodes.ContainsKey(current))
+        {
+            stack.Push(previousNodes[current]);
+            current = previousNodes[current];
+        }
+
+        var path = new Path();
+        
+        while (stack.Count > 0)
+            path.Add(stack.Pop().Label);
+        
+        path.SetDistance(distances[toNode]);
+        
+        return path;
+    }
+
+    private Node GetNodeFromLabel(string label)
+    {
+        if (!_nodes.ContainsKey(label))
+            throw new ArgumentException($"The node with label {label} doesn't exists in the graph.", nameof(label));
+
+        return _nodes[label];
     }
     
     public void Print()
