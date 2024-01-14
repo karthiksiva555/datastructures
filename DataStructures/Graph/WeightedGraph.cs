@@ -71,6 +71,37 @@ public class WeightedGraph
         toNode.AddEdge(fromNode, weight);
     }
 
+    public WeightedGraph GetMinimumSpanningTree()
+    {
+        var tree = new WeightedGraph();
+        var queue = new PriorityQueue<Edge, int>();
+        var startNode = _nodes.Values.First();
+        tree.AddNode(startNode.Label);
+        
+        // Insert all the edges of the starting node in the priority queue
+        foreach(var edge in startNode.GetEdges())
+            queue.Enqueue(edge, edge.Weight);
+
+        while (queue.Count > 0)
+        {
+            var minEdge = queue.Dequeue();
+
+            if (tree._nodes.ContainsKey(minEdge.To.Label))
+                continue;
+            
+            tree.AddNode(minEdge.To.Label);
+            tree.AddEdge(minEdge.From.Label, minEdge.To.Label, minEdge.Weight);
+
+            foreach (var edge in minEdge.To.GetEdges())
+            {
+                if(!tree._nodes.ContainsKey(edge.To.Label))
+                    queue.Enqueue(edge, edge.Weight);
+            }
+        }
+
+        return tree;
+    }
+    
     public Path GetShortestPath(string from, string to)
     {
         var fromNode = GetNodeFromLabel(from);
@@ -140,6 +171,39 @@ public class WeightedGraph
             throw new ArgumentException($"The node with label {label} doesn't exists in the graph.", nameof(label));
 
         return _nodes[label];
+    }
+
+    public bool HasCycle()
+    {
+        // when node has 5 edges, only A, B, C are connected and D and E are connected to each other but not connected to A, B, C
+        // the foreach loop will run 5 times, one for each node
+        // Let's say we started with node A, since we are doing DFS, recursion will also visit B and C. So no need to take B or C as starting nodes
+        // Keeping visited outside the loop helps in skipping the nodes that are already visited.
+        HashSet<Node> visited = new();
+        
+        foreach (var node in _nodes.Values)
+        {
+            if (!visited.Contains(node) && HasCycle(node, null, visited))
+                return true;
+        }
+
+        return false;
+    }
+
+    private bool HasCycle(Node node, Node? previous, ISet<Node> visited)
+    {
+        visited.Add(node);
+        
+        foreach (var edge in node.GetEdges())
+        {
+            if(edge.To == previous)
+                continue;
+            
+            if (visited.Contains(edge.To) || HasCycle(edge.To, node, visited))
+                return true;
+        }
+        
+        return false;
     }
     
     public void Print()
