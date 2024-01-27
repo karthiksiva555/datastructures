@@ -4,6 +4,10 @@ using DataStructures.Queue;
 
 namespace DataStructures.Graph;
 
+/// <summary>
+/// This graph implementation is using arrays to represent adjacency list 
+/// The array item contains linked list of neighbour nodes
+/// </summary>
 public class Graph
 {
     private class Node
