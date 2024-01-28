@@ -5,10 +5,18 @@ Console.WriteLine("Hello, Welcome to Algorithms!");
 
 var input = new []{ 10, 16, 3, 9, 5 };
 
+// Insertion Sort
+//-------------------------------------------------------
+InsertionSort.Sort(input);
+PrintArray(input);
+
+//-------------------------------------------------------
+
+
 // Selection Sort
 //-------------------------------------------------------
-SelectionSort.Sort(input);
-PrintArray(input);
+// SelectionSort.Sort(input);
+// PrintArray(input);
 
 //-------------------------------------------------------
 
