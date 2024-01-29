@@ -1,14 +1,19 @@
-﻿
-using Algorithms.Sorting;
+﻿using Algorithms.Sorting;
 
 Console.WriteLine("Hello, Welcome to Algorithms!");
 
 var input = new []{ 10, 16, 3, 9, 5 };
 
+// Quick Sort
+//-------------------------------------------------------
+QuickSort.Sort(input);
+PrintArray(input);
+//-------------------------------------------------------
+
 // Merge Sort
 //-------------------------------------------------------
-MergeSort.Sort(input);
-PrintArray(input);
+// MergeSort.Sort(input);
+// PrintArray(input);
 //-------------------------------------------------------
 
 
