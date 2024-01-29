@@ -4,10 +4,17 @@ Console.WriteLine("Hello, Welcome to Algorithms!");
 
 var input = new []{ 10, 16, 3, 9, 5 };
 
+// Counting Sort
+//-------------------------------------------------------
+CountingSort.Sort(input);
+PrintArray(input);
+//-------------------------------------------------------
+
+
 // Quick Sort
 //-------------------------------------------------------
-QuickSort.Sort(input);
-PrintArray(input);
+// QuickSort.Sort(input);
+// PrintArray(input);
 //-------------------------------------------------------
 
 // Merge Sort
