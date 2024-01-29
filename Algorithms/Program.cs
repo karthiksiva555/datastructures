@@ -3,13 +3,20 @@
 Console.WriteLine("Hello, Welcome to Algorithms!");
 
 var input = new []{ 10, 16, 3, 9, 5 };
+// var input = new []{ 6, 2, 5, 4, 3, 7 }; bucket count = 3
 
-// Counting Sort
+// Bucket Sort
 //-------------------------------------------------------
-CountingSort.Sort(input);
+BucketSort.Sort(input, 5); // Bucket count is important here: max/bucketCount < bucketCount
 PrintArray(input);
 //-------------------------------------------------------
 
+
+// Counting Sort
+//-------------------------------------------------------
+// CountingSort.Sort(input);
+// PrintArray(input);
+//-------------------------------------------------------
 
 // Quick Sort
 //-------------------------------------------------------
