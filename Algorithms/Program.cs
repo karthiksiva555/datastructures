@@ -1,14 +1,50 @@
-﻿using Algorithms.Sorting;
+﻿using Algorithms.Search;
+using Algorithms.Sorting;
 
 Console.WriteLine("Hello, Welcome to Algorithms!");
 
+// Searching Algorithms
+
 var input = new []{ 10, 16, 3, 9, 5 };
+const int searchFor = 25; // 3 or 25;
+
+// Linear Search
+//-------------------------------------------------------
+
+//-------------------------------------------------------
+
+// Binary Search
+//-------------------------------------------------------
+var sorted = new[] { 2, 5, 7, 8, 11, 15, 19 };
+const int target = 19;
+var result = BinarySearch.Search(sorted, target);
+PrintResult(result, target);
+//-------------------------------------------------------
+
+
+// Linear Search
+//-------------------------------------------------------
+// var result = LinearSearch.Search(input, searchFor);
+// PrintResult(result, searchFor);
+//-------------------------------------------------------
+
+void PrintResult(int searchResult, int search)
+{
+    var message = searchResult == -1
+        ? $"Value {search} doesn't exist in input array"
+        : $"Value {search} is found at index {searchResult}";
+    Console.WriteLine(message);
+}
+
+// Sorting Algorithms
+
+// var input = new []{ 10, 16, 3, 9, 5 };
 // var input = new []{ 6, 2, 5, 4, 3, 7 }; bucket count = 3
 
 // Bucket Sort
 //-------------------------------------------------------
-BucketSort.Sort(input, 5); // Bucket count is important here: max/bucketCount < bucketCount
-PrintArray(input);
+// BucketSort.Sort(input, 5); // Bucket count is important here: max/bucketCount < bucketCount
+// PrintArray(input);
 //-------------------------------------------------------
 
 
