@@ -5,25 +5,26 @@ Console.WriteLine("Hello, Welcome to Algorithms!");
 
 // Searching Algorithms
 
-var input = new []{ 10, 16, 3, 9, 5 };
-const int searchFor = 25; // 3 or 25;
-
-// Linear Search
+// Ternary Search
 //-------------------------------------------------------
-
+var sorted = new[] { 2, 5, 7, 8, 11, 15, 19 };
+const int target = 19;
+var result = TernarySearch.Search(sorted, target);
+PrintResult(result, target);
 //-------------------------------------------------------
 
 // Binary Search
 //-------------------------------------------------------
-var sorted = new[] { 2, 5, 7, 8, 11, 15, 19 };
-const int target = 19;
-var result = BinarySearch.Search(sorted, target);
-PrintResult(result, target);
+// var sorted = new[] { 2, 5, 7, 8, 11, 15, 19 };
+// const int target = 19;
+// var result = BinarySearch.Search(sorted, target);
+// PrintResult(result, target);
 //-------------------------------------------------------
-
 
 // Linear Search
 //-------------------------------------------------------
+// var input = new []{ 10, 16, 3, 9, 5 };
+// const int searchFor = 25; // 3 or 25;
 // var result = LinearSearch.Search(input, searchFor);
 // PrintResult(result, searchFor);
 //-------------------------------------------------------
