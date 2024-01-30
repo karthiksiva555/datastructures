@@ -26,7 +26,7 @@ public static class TernarySearch
             if (sorted[middle2] == target)
                 return middle2;
 
-            if (sorted[left] <= target && target < sorted[middle1])
+            if (target < sorted[middle1])
                 right = middle1 - 1;
 
             if (sorted[middle1] < target && target < sorted[middle2])
@@ -35,7 +35,7 @@ public static class TernarySearch
                 right = middle2 - 1;
             }
 
-            if (sorted[middle2] < target && target <= sorted[right])
+            if (sorted[middle2] < target)
                 left = middle2 + 1;
         }
 
