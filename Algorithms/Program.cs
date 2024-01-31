@@ -1,16 +1,38 @@
-﻿using Algorithms.Search;
+﻿using Algorithms;
+using Algorithms.Search;
 using Algorithms.Sorting;
 
 Console.WriteLine("Hello, Welcome to Algorithms!");
+
+// String Manipulation
+//-------------------------------------------------------
+const string input = "siva karthik";
+
+// Reverse string
+//-------------------------------------------------------
+var reverse = StringManipulation.ReverseStringWithStack(input);
+Console.WriteLine($"The reverse of string {input}: {reverse}");
+//
+// reverse = StringManipulation.ReverseStringWithoutStack(input);
+// Console.WriteLine($"The reverse of string {input}: {reverse}");
+//
+// reverse = StringManipulation.ReverseStringInPlace(input);
+// Console.WriteLine($"The reverse of string {input}: {reverse}");
+
+// Vowel Count
+//-------------------------------------------------------
+
+// var vowelCount = StringManipulation.VowelCount(input);
+// Console.WriteLine($"Number of vowels in {input}: {vowelCount}");
 
 // Searching Algorithms
 
 // Exponential Search Search
 //-------------------------------------------------------
-var sorted = new[] { 2, 5, 7, 8, 11, 15, 19 };
-const int target = 15;
-var result = ExponentialSearch.Search(sorted, target);
-PrintResult(result, target);
+// var sorted = new[] { 2, 5, 7, 8, 11, 15, 19 };
+// const int target = 15;
+// var result = ExponentialSearch.Search(sorted, target);
+// PrintResult(result, target);
 //-------------------------------------------------------
 
 // Jump Search
