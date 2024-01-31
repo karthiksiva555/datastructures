@@ -5,12 +5,20 @@ Console.WriteLine("Hello, Welcome to Algorithms!");
 
 // Searching Algorithms
 
-// Ternary Search
+// Jump Search
 //-------------------------------------------------------
 var sorted = new[] { 2, 5, 7, 8, 11, 15, 19 };
 const int target = 19;
-var result = TernarySearch.Search(sorted, target);
+var result = JumpSearch.Search(sorted, target);
 PrintResult(result, target);
+//-------------------------------------------------------
+
+// Ternary Search
+//-------------------------------------------------------
+// var sorted = new[] { 2, 5, 7, 8, 11, 15, 19 };
+// const int target = 19;
+// var result = TernarySearch.Search(sorted, target);
+// PrintResult(result, target);
 //-------------------------------------------------------
 
 // Binary Search
