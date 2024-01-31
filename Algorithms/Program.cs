@@ -5,12 +5,20 @@ Console.WriteLine("Hello, Welcome to Algorithms!");
 
 // Searching Algorithms
 
-// Jump Search
+// Exponential Search Search
 //-------------------------------------------------------
 var sorted = new[] { 2, 5, 7, 8, 11, 15, 19 };
-const int target = 19;
-var result = JumpSearch.Search(sorted, target);
+const int target = 15;
+var result = ExponentialSearch.Search(sorted, target);
 PrintResult(result, target);
+//-------------------------------------------------------
+
+// Jump Search
+//-------------------------------------------------------
+// var sorted = new[] { 2, 5, 7, 8, 11, 15, 19 };
+// const int target = 19;
+// var result = JumpSearch.Search(sorted, target);
+// PrintResult(result, target);
 //-------------------------------------------------------
 
 // Ternary Search
