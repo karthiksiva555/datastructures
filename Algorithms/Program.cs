@@ -8,14 +8,30 @@ Console.WriteLine("Hello, Welcome to Algorithms!");
 //-------------------------------------------------------
 const string input = "siva karthik";
 
+// Anagrams
+//-------------------------------------------------------
+var result = StringManipulation.Anagrams("abcd", "cdef");
+Console.WriteLine(result);
+
+result = StringManipulation.AnagramsSort("abcd", "cbad");
+Console.WriteLine(result);
+
+result = StringManipulation.AnagramsWithoutDictionary("abcd", "cbad");
+Console.WriteLine(result);
+
+
+// Capitalize First Character in sentence
+//-------------------------------------------------------
+// var result = StringManipulation.CapitalizeFirstChar("HELLO    this    world    is     beautiful");
+// Console.WriteLine(result);
+
 // Most Repeated Characters
 //-------------------------------------------------------
 // var mostRepeated = StringManipulation.MostRepeatedChar("new");
 // Console.WriteLine($"Most repeated character is: {mostRepeated}");
 
-var mostRepeated = StringManipulation.MostRepeatedCharNoDictionary("hello howareyoudoing");
-Console.WriteLine($"Most repeated character is: {mostRepeated}");
-
+// var mostRepeated = StringManipulation.MostRepeatedCharNoDictionary("hello howareyoudoing");
+// Console.WriteLine($"Most repeated character is: {mostRepeated}");
 
 // Remove Duplicates
 //-------------------------------------------------------

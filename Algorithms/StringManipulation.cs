@@ -1,4 +1,5 @@
 using System.Text;
+using System.Text.RegularExpressions;
 
 namespace Algorithms;
 
@@ -218,5 +219,79 @@ public static class StringManipulation
         }
 
         return maxChar;
+    }
+
+    public static string CapitalizeFirstChar(string input)
+    {
+        if (string.IsNullOrEmpty(input.Trim()))
+            return string.Empty;
+        
+        var processedInput = Regex.Replace(input, @"\s+", " ");
+        var words = processedInput.Split(' ');
+        for (var i = 0; i < words.Length; i++)
+            words[i] = words[i][..1].ToUpper() + words[i][1..].ToLower();
+
+        return string.Join(' ', words);
+    }
+
+    // This uses a dictionary to keep the count of characters
+    public static bool Anagrams(string input, string compared)
+    {
+        if (string.IsNullOrEmpty(input) || string.IsNullOrEmpty(compared) || input.Length != compared.Length)
+            return false;
+        
+        var map = new Dictionary<char, int>();
+        foreach(var ch in input)
+            if (!map.TryAdd(ch, 1))
+                map[ch]++;
+
+        foreach (var ch in compared)
+        {
+            if (!map.ContainsKey(ch))
+                return false;
+            map[ch]--;
+        }
+
+        return map.All(m => m.Value == 0);
+    }
+    
+    // Time complexity : O(n log n) because of the sort method used
+    public static bool AnagramsSort(string input, string compared)
+    {
+        if (string.IsNullOrEmpty(input) || string.IsNullOrEmpty(compared) || input.Length != compared.Length)
+            return false;
+        
+        var inputArray = input.ToCharArray();
+        Array.Sort(inputArray);
+
+        var comparedArray = compared.ToCharArray();
+        Array.Sort(comparedArray);
+
+        // return string.Join(' ', inputArray) == string.Join(' ', comparedArray);
+        return inputArray.SequenceEqual(comparedArray);
+    }
+
+    // This method uses an array to store the char count instead of a dictionary
+    public static bool AnagramsWithoutDictionary(string input, string compared)
+    {
+        if (string.IsNullOrEmpty(input) || string.IsNullOrEmpty(compared) || input.Length != compared.Length)
+            return false;
+
+        const int alphabets = 26;
+        var frequencies = new int[alphabets];
+
+        foreach (var ch in input.ToLower())
+            frequencies[ch - 'a']++;
+
+        foreach (var ch in compared.ToLower())
+        {
+            var index = ch - 'a';
+            // the current character didn't exist in input string
+            if (frequencies[index] == 0)
+                return false;
+            frequencies[index]--;
+        }
+
+        return frequencies.All(f => f == 0);
     }
 }
