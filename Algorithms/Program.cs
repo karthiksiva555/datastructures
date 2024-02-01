@@ -8,16 +8,21 @@ Console.WriteLine("Hello, Welcome to Algorithms!");
 //-------------------------------------------------------
 const string input = "siva karthik";
 
+// Palindrome
+//-------------------------------------------------------
+var result = StringManipulation.Palindrome("liril");
+Console.WriteLine(result);
+
 // Anagrams
 //-------------------------------------------------------
-var result = StringManipulation.Anagrams("abcd", "cdef");
-Console.WriteLine(result);
-
-result = StringManipulation.AnagramsSort("abcd", "cbad");
-Console.WriteLine(result);
-
-result = StringManipulation.AnagramsWithoutDictionary("abcd", "cbad");
-Console.WriteLine(result);
+// var result = StringManipulation.Anagrams("abcd", "cdef");
+// Console.WriteLine(result);
+//
+// result = StringManipulation.AnagramsSort("abcd", "cbad");
+// Console.WriteLine(result);
+//
+// result = StringManipulation.AnagramsWithoutDictionary("abcd", "cbad");
+// Console.WriteLine(result);
 
 
 // Capitalize First Character in sentence

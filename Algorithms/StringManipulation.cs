@@ -294,4 +294,27 @@ public static class StringManipulation
 
         return frequencies.All(f => f == 0);
     }
+
+    public static bool Palindrome(string? input)
+    {
+        if (input == null)
+            return false;
+        
+        if (string.Equals(input, string.Empty))
+            return true;
+        
+        // var reversed = new string(input.Reverse().ToArray());
+        // return input == reversed; // This will check value equality; in C#, reference equality can be checked using ReferenceEquals()
+        
+        var start = 0;
+        var end = input.Length - 1;
+        
+        while (start < end)
+        {
+            if (input[start++] != input[end--])
+                return false;
+        }
+        
+        return true;
+    }
 }
