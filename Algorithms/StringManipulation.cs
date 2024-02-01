@@ -75,4 +75,148 @@ public static class StringManipulation
 
         return new string(inputArray);
     }
+
+    /// <summary>
+    /// This method reverses the string array by swapping first and last, second and second from last etc...
+    /// </summary>
+    /// <param name="input">the sentence to be reversed</param>
+    /// <returns>reversed sentence</returns>
+    public static string ReverseSentence(string input)
+    {
+        if (string.IsNullOrEmpty(input))
+            return string.Empty;
+        
+        var stringArray = input.Trim().Split(' ');
+        
+        var start = 0;
+        var end = stringArray.Length - 1;
+        
+        while (start <= end)
+        {
+            (stringArray[end], stringArray[start]) = (stringArray[start], stringArray[end]);
+            start++;
+            end--;
+        }
+
+        return string.Join(' ', stringArray);
+    }
+
+    /// <summary>
+    /// Using C#'s Reverse method on Array
+    /// </summary>
+    /// <param name="input">the sentence to be reversed</param>
+    /// <returns>reversed sentence</returns>
+    public static string ReverseSentenceUsingCSharp(string input)
+    {
+        if (string.IsNullOrEmpty(input))
+            return string.Empty;
+        
+        var stringArray = input.Trim().Split(' ');
+        Array.Reverse(stringArray);
+        
+        return string.Join(' ', stringArray);
+    }
+
+    public static bool RotatedString(string input, string compared)
+    {
+        // If two strings are null, are they considered equal? => No
+        // if (string.IsNullOrEmpty(input) && string.IsNullOrEmpty(compared))
+        //     return true;
+
+        if (string.IsNullOrEmpty(input) || string.IsNullOrEmpty(compared) || input.Length != compared.Length)
+            return false;
+
+        var j = compared.IndexOf(input[0]);
+        
+        foreach (var ch in input)
+        {
+            if (ch != compared[j])
+                return false;
+            
+            j = (j + 1) % compared.Length;
+        }
+
+        return true;
+    }
+
+    public static bool RotatedStringSimpler(string input, string compared)
+    {
+        if (string.IsNullOrEmpty(input) || string.IsNullOrEmpty(compared) || input.Length != compared.Length)
+            return false;
+        
+        // Concatenate input with itself. Eg: input = ABCD => concatenated = ABCDABCD
+        // check if compared is inside the concatenated string. Eg: compared = BCDA
+        // this allocates extra memory. Let's say input has a million chars, we need 2 million chars
+        var concatenated = input + input;
+
+        return concatenated.Contains(compared);
+    }
+
+    public static string RemoveDuplicateChars(string input)
+    {
+        if (string.IsNullOrEmpty(input))
+            return string.Empty;
+        
+        var set = new HashSet<char>();
+        var result = new StringBuilder();
+
+        foreach (var ch in input)
+        {
+            if(set.Contains(ch))
+                continue;
+            result.Append(ch);
+            set.Add(ch);
+        }
+
+        return result.ToString();
+    }
+
+    public static char MostRepeatedChar(string input)
+    {
+        if (string.IsNullOrEmpty(input))
+            throw new ArgumentNullException(nameof(input), "The parameter input is null or empty");
+        
+        var dictionary = new Dictionary<char, int>();
+        var mostRepeated = input[0];
+        var maxCount = 1;
+        
+        foreach (var ch in input)
+        {
+            if (!dictionary.TryAdd(ch, 1))
+                dictionary[ch]++;
+
+            if (dictionary[ch] <= maxCount) 
+                continue;
+            mostRepeated = ch;
+            maxCount = dictionary[ch];
+        }
+
+        return mostRepeated;
+    }
+
+    public static char MostRepeatedCharNoDictionary(string input)
+    {
+        if (string.IsNullOrEmpty(input))
+            throw new ArgumentNullException(nameof(input), "The parameter input is null or empty");
+
+        const int asciiCharCount = 256;
+
+        var asciiArray = new int[asciiCharCount];
+
+        // ch is sent as index for asciiArray => C# will convert the character to its ASCII number
+        foreach (var ch in input)
+            asciiArray[ch]++;
+
+        var maxCount = 0;
+        var maxChar = ' ';
+        for (var i = 0; i < asciiArray.Length; i++)
+        {
+            if(asciiArray[i] <= maxCount)
+                continue;
+            maxCount = asciiArray[i];
+            maxChar = (char)i; // converting the index to its character representation
+        }
+
+        return maxChar;
+    }
 }

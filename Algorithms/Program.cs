@@ -8,10 +8,36 @@ Console.WriteLine("Hello, Welcome to Algorithms!");
 //-------------------------------------------------------
 const string input = "siva karthik";
 
+// Most Repeated Characters
+//-------------------------------------------------------
+// var mostRepeated = StringManipulation.MostRepeatedChar("new");
+// Console.WriteLine($"Most repeated character is: {mostRepeated}");
+
+var mostRepeated = StringManipulation.MostRepeatedCharNoDictionary("hello howareyoudoing");
+Console.WriteLine($"Most repeated character is: {mostRepeated}");
+
+
+// Remove Duplicates
+//-------------------------------------------------------
+// var result = StringManipulation.RemoveDuplicateChars("Hellooo!!!!");
+// Console.WriteLine($"{result}");
+
+// Rotated Strings
+//-------------------------------------------------------
+// var result = StringManipulation.RotatedString("ABCD", "BCDA");
+// Console.WriteLine($"The strings are rotated: {result}");
+
+// Console.WriteLine($"The strings are rotated: {StringManipulation.RotatedStringSimpler("newton", "nnewto")}");
+
+// Reverse sentence
+//-------------------------------------------------------
+// const string sentence = "Python is a great programming language";
+// Console.WriteLine($"{StringManipulation.ReverseSentence(sentence)}");
+
 // Reverse string
 //-------------------------------------------------------
-var reverse = StringManipulation.ReverseStringWithStack(input);
-Console.WriteLine($"The reverse of string {input}: {reverse}");
+// var reverse = StringManipulation.ReverseStringWithStack(input);
+// Console.WriteLine($"The reverse of string {input}: {reverse}");
 //
 // reverse = StringManipulation.ReverseStringWithoutStack(input);
 // Console.WriteLine($"The reverse of string {input}: {reverse}");
